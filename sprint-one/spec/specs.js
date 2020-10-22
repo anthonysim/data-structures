@@ -35,12 +35,14 @@ define([
       verifyClass(instantiator).followsPattern(variant, {}, prototypeOfInstances);
 
       it('reports a size of zero for a new stack', function() {
+        // console.log(stack.size());
         expect(stack.size()).to.equal(0);
       });
 
       it('reports a size of 2 after adding two items', function() {
         stack.push('a');
         stack.push('b');
+        // console.log(stack.size());
         expect(stack.size()).to.equal(2);
       });
 
@@ -52,6 +54,7 @@ define([
         stack.push('a');
         stack.push('b');
         stack.pop();
+        // console.log(stack.size());
         expect(stack.size()).to.equal(1);
       });
 
@@ -153,8 +156,11 @@ define([
       it('removes the oldest item, after newer items have already been added and removed', function() {
         queue.enqueue('a');
         queue.enqueue('b');
+        // console.log(queue.size());
         queue.dequeue();
+        // console.log(queue.size());
         queue.enqueue('c');
+        // console.log(queue.size());
         expect(queue.dequeue()).to.equal('b');
       });
     });
