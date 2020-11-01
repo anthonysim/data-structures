@@ -35,22 +35,37 @@ bstMethods.insert = function(value) {
   bstSearch(this);
 };
 
+// bstMethods.contains = function(value) {
+//   var bstSearch = function(node) {
+//     if (node.value === value) {
+//       return true;
+//     } else if (node.value > value) {
+//       if (node.left !== null) {
+//         return bstSearch(node.left);
+//       }
+//     } else if (node.value < value) {
+//       if (node.right !== null) {
+//         return bstSearch(node.right);
+//       }
+//     }
+//     return false;
+//   };
+//   return bstSearch(this);
+// };
+
 bstMethods.contains = function(value) {
-  var bstSearch = function(node) {
-    if (node.value === value) {
+  let current = this;
+
+  while (current) {
+    if (current.value === value) {
       return true;
-    } else if (node.value > value) {
-      if (node.left !== null) {
-        return bstSearch(node.left);
-      }
-    } else if (node.value < value) {
-      if (node.right !== null) {
-        return bstSearch(node.right);
-      }
+    } else if (value < current.value) {
+      current = current.left;
+    } else {
+      current = current.right;
     }
-    return false;
-  };
-  return bstSearch(this);
+  }
+  return false;
 };
 
 bstMethods.depthFirstLog = function(callback) {
